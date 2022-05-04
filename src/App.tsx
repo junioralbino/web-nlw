@@ -1,9 +1,9 @@
 interface ButtonProps {
-    text?: string
+    text?: string;
 }
 
 function Button(props: ButtonProps){
-   return <button className="">{props.text ?? 'Default'}</button>
+   return <button className="bg-violet-500">{props.text ?? 'Default'}</button>
 }
 
 
