@@ -1,7 +1,20 @@
-import { useState } from 'react'
+interface ButtonProps {
+    text?: string
+}
+
+function Button(props: ButtonProps){
+   return <button className="">{props.text ?? 'Default'}</button>
+}
+
 
 function App() {
-  return <h1>Hello Word</h1>
+  return (
+    <div>
+      <Button text="Enviar" />
+      <Button text="Fale conosco" />
+      <Button />
+    </div>
+  )
 }
 
 export default App
