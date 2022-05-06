@@ -6,7 +6,7 @@ import bugImageUrl  from '../../assets/bug.svg';
 import ideaImageUrl  from '../../assets/idea.svg';
 import thoughtImageUrl  from '../../assets/thought.svg';
 
-import { FeedbackTypeStep }  from "./Steps/feedbackTypeStep";
+import { FeedbackTypeStep } from "./Steps/feedbackTypeStep";
 
 
 export const feedbackTypes = {
@@ -48,7 +48,7 @@ export function WidgetForm(){
           </header>
           
         { !feedbackType ? (
-          <FeedbackTypeStep />
+          <FeedbackTypeStep  onFeedbackTypeChanged={setFeedbackType} />
         ) : (
             <p>Seja bem vindo!!</p> 
         )} 
