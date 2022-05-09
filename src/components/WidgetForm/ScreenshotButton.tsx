@@ -3,7 +3,12 @@ import { Camera } from "phosphor-react";
 import { useState } from "react";
 import { Loading } from "../Loading";
 
-export function ScreenshotButton(){
+interface ScreenshotButtonProps {
+   screenshot: string;
+   onScreenshotTook: (screenshot: string) => void;
+}
+
+export function ScreenshotButton({screenshot, onScreenshotTook }: ScreenshotButtonProps){
 
     const [isTakingScreenshot, setIsTakingScreenshot] = useState(false)
 
@@ -13,12 +18,20 @@ export function ScreenshotButton(){
        const canvas =  await html2canvas(document.querySelector('html')!);
        const base64image = canvas.toDataURL('image/png');
 
-       console.log(base64image)
+       onScreenshotTook(base64image);
+
        setIsTakingScreenshot(false);
     }
-    return(
-      <button type="button" onClick={handleTakeScreenshot} className="p-2 bg-zinc-800 rounded-md border-transparent hover:bg-zinc-700 transition-colors">
-        { isTakingScreenshot ? <Loading /> : <Camera className="w-6 h-6" />  }   
-      </button>
-    );
+
+    if(screenshot){
+       return(
+         <p>Foto</p>
+       );
+    }
+      return(
+        <button type="button" onClick={handleTakeScreenshot} className="p-2 bg-zinc-800 rounded-md border-transparent hover:bg-zinc-700 transition-colors">
+          { isTakingScreenshot ? <Loading /> : <Camera className="w-6 h-6" />  }   
+        </button>
+      );
+    
 }
